@@ -1,0 +1,506 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D92841711A1556D900DBE67F /* ArchiveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416B1A1556D900DBE67F /* ArchiveKey.swift */; };
+		D92841721A1556D900DBE67F /* ArchiveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416B1A1556D900DBE67F /* ArchiveKey.swift */; };
+		D92841731A1556D900DBE67F /* GenericKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416C1A1556D900DBE67F /* GenericKey.swift */; };
+		D92841741A1556D900DBE67F /* GenericKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416C1A1556D900DBE67F /* GenericKey.swift */; };
+		D92841751A1556D900DBE67F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416D1A1556D900DBE67F /* Keychain.swift */; };
+		D92841761A1556D900DBE67F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416D1A1556D900DBE67F /* Keychain.swift */; };
+		D92841771A1556D900DBE67F /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416E1A1556D900DBE67F /* KeychainItem.swift */; };
+		D92841781A1556D900DBE67F /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416E1A1556D900DBE67F /* KeychainItem.swift */; };
+		D92841791A1556D900DBE67F /* KeychainQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416F1A1556D900DBE67F /* KeychainQuery.swift */; };
+		D928417A1A1556D900DBE67F /* KeychainQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D928416F1A1556D900DBE67F /* KeychainQuery.swift */; };
+		D928417B1A1556D900DBE67F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92841701A1556D900DBE67F /* KeychainService.swift */; };
+		D928417C1A1556D900DBE67F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92841701A1556D900DBE67F /* KeychainService.swift */; };
+		D96F8C601A12823A00CCEB81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96F8C5F1A12823A00CCEB81 /* AppDelegate.swift */; };
+		D96F8C621A12823A00CCEB81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96F8C611A12823A00CCEB81 /* ViewController.swift */; };
+		D96F8C651A12823A00CCEB81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96F8C631A12823A00CCEB81 /* Main.storyboard */; };
+		D96F8C671A12823A00CCEB81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96F8C661A12823A00CCEB81 /* Images.xcassets */; };
+		D96F8C6A1A12823A00CCEB81 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96F8C681A12823A00CCEB81 /* LaunchScreen.xib */; };
+		D96F8C861A1282D100CCEB81 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D96F8C851A1282D000CCEB81 /* Security.framework */; };
+		D96F8C8C1A1285C500CCEB81 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96F8C8B1A1285C500CCEB81 /* KeychainTests.swift */; };
+		D9B834F41A14F64800E4A2DE /* KeychainQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B834F31A14F64800E4A2DE /* KeychainQueryTests.swift */; };
+		D9C773571A1541C700E18DB9 /* GenericKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C773561A1541C700E18DB9 /* GenericKeyTests.swift */; };
+		D9C773591A15444F00E18DB9 /* ArchiveKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C773581A15444F00E18DB9 /* ArchiveKeyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D96F8C701A12823A00CCEB81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D96F8C521A12823A00CCEB81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D96F8C591A12823A00CCEB81;
+			remoteInfo = SwiftKeychain;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D928416B1A1556D900DBE67F /* ArchiveKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArchiveKey.swift; path = Keychain/ArchiveKey.swift; sourceTree = "<group>"; };
+		D928416C1A1556D900DBE67F /* GenericKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericKey.swift; path = Keychain/GenericKey.swift; sourceTree = "<group>"; };
+		D928416D1A1556D900DBE67F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Keychain/Keychain.swift; sourceTree = "<group>"; };
+		D928416E1A1556D900DBE67F /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainItem.swift; path = Keychain/KeychainItem.swift; sourceTree = "<group>"; };
+		D928416F1A1556D900DBE67F /* KeychainQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainQuery.swift; path = Keychain/KeychainQuery.swift; sourceTree = "<group>"; };
+		D92841701A1556D900DBE67F /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainService.swift; path = Keychain/KeychainService.swift; sourceTree = "<group>"; };
+		D96F8C5A1A12823A00CCEB81 /* SwiftKeychain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftKeychain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D96F8C5E1A12823A00CCEB81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D96F8C5F1A12823A00CCEB81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D96F8C611A12823A00CCEB81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D96F8C641A12823A00CCEB81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D96F8C661A12823A00CCEB81 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D96F8C691A12823A00CCEB81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D96F8C6F1A12823A00CCEB81 /* SwiftKeychainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftKeychainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D96F8C741A12823A00CCEB81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D96F8C851A1282D000CCEB81 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D96F8C8B1A1285C500CCEB81 /* KeychainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
+		D9B834F31A14F64800E4A2DE /* KeychainQueryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainQueryTests.swift; sourceTree = "<group>"; };
+		D9C773561A1541C700E18DB9 /* GenericKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericKeyTests.swift; sourceTree = "<group>"; };
+		D9C773581A15444F00E18DB9 /* ArchiveKeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveKeyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D96F8C571A12823A00CCEB81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96F8C861A1282D100CCEB81 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96F8C6C1A12823A00CCEB81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D96F8C511A12823A00CCEB81 = {
+			isa = PBXGroup;
+			children = (
+				D96F8C5C1A12823A00CCEB81 /* SwiftKeychain */,
+				D96F8C721A12823A00CCEB81 /* SwiftKeychainTests */,
+				D96F8C5B1A12823A00CCEB81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D96F8C5B1A12823A00CCEB81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C5A1A12823A00CCEB81 /* SwiftKeychain.app */,
+				D96F8C6F1A12823A00CCEB81 /* SwiftKeychainTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D96F8C5C1A12823A00CCEB81 /* SwiftKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C801A12828000CCEB81 /* Keychain */,
+				D96F8C7F1A12827100CCEB81 /* Controllers */,
+				D96F8C5F1A12823A00CCEB81 /* AppDelegate.swift */,
+				D96F8C661A12823A00CCEB81 /* Images.xcassets */,
+				D96F8C5D1A12823A00CCEB81 /* Supporting Files */,
+			);
+			path = SwiftKeychain;
+			sourceTree = "<group>";
+		};
+		D96F8C5D1A12823A00CCEB81 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C871A1282D700CCEB81 /* Frameworks */,
+				D96F8C681A12823A00CCEB81 /* LaunchScreen.xib */,
+				D96F8C631A12823A00CCEB81 /* Main.storyboard */,
+				D96F8C5E1A12823A00CCEB81 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D96F8C721A12823A00CCEB81 /* SwiftKeychainTests */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C811A12829200CCEB81 /* Keychain */,
+				D96F8C731A12823A00CCEB81 /* Supporting Files */,
+			);
+			path = SwiftKeychainTests;
+			sourceTree = "<group>";
+		};
+		D96F8C731A12823A00CCEB81 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C741A12823A00CCEB81 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D96F8C7F1A12827100CCEB81 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C611A12823A00CCEB81 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D96F8C801A12828000CCEB81 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				D92841701A1556D900DBE67F /* KeychainService.swift */,
+				D928416E1A1556D900DBE67F /* KeychainItem.swift */,
+				D928416F1A1556D900DBE67F /* KeychainQuery.swift */,
+				D928416D1A1556D900DBE67F /* Keychain.swift */,
+				D928416C1A1556D900DBE67F /* GenericKey.swift */,
+				D928416B1A1556D900DBE67F /* ArchiveKey.swift */,
+			);
+			name = Keychain;
+			sourceTree = "<group>";
+		};
+		D96F8C811A12829200CCEB81 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C8B1A1285C500CCEB81 /* KeychainTests.swift */,
+				D9B834F31A14F64800E4A2DE /* KeychainQueryTests.swift */,
+				D9C773561A1541C700E18DB9 /* GenericKeyTests.swift */,
+				D9C773581A15444F00E18DB9 /* ArchiveKeyTests.swift */,
+			);
+			name = Keychain;
+			sourceTree = "<group>";
+		};
+		D96F8C871A1282D700CCEB81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D96F8C851A1282D000CCEB81 /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D96F8C591A12823A00CCEB81 /* SwiftKeychain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96F8C791A12823A00CCEB81 /* Build configuration list for PBXNativeTarget "SwiftKeychain" */;
+			buildPhases = (
+				D96F8C561A12823A00CCEB81 /* Sources */,
+				D96F8C571A12823A00CCEB81 /* Frameworks */,
+				D96F8C581A12823A00CCEB81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftKeychain;
+			productName = SwiftKeychain;
+			productReference = D96F8C5A1A12823A00CCEB81 /* SwiftKeychain.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D96F8C6E1A12823A00CCEB81 /* SwiftKeychainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D96F8C7C1A12823A00CCEB81 /* Build configuration list for PBXNativeTarget "SwiftKeychainTests" */;
+			buildPhases = (
+				D96F8C6B1A12823A00CCEB81 /* Sources */,
+				D96F8C6C1A12823A00CCEB81 /* Frameworks */,
+				D96F8C6D1A12823A00CCEB81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D96F8C711A12823A00CCEB81 /* PBXTargetDependency */,
+			);
+			name = SwiftKeychainTests;
+			productName = SwiftKeychainTests;
+			productReference = D96F8C6F1A12823A00CCEB81 /* SwiftKeychainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D96F8C521A12823A00CCEB81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Yanko Dimitrov";
+				TargetAttributes = {
+					D96F8C591A12823A00CCEB81 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					D96F8C6E1A12823A00CCEB81 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = D96F8C591A12823A00CCEB81;
+					};
+				};
+			};
+			buildConfigurationList = D96F8C551A12823A00CCEB81 /* Build configuration list for PBXProject "SwiftKeychain" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D96F8C511A12823A00CCEB81;
+			productRefGroup = D96F8C5B1A12823A00CCEB81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D96F8C591A12823A00CCEB81 /* SwiftKeychain */,
+				D96F8C6E1A12823A00CCEB81 /* SwiftKeychainTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D96F8C581A12823A00CCEB81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D96F8C651A12823A00CCEB81 /* Main.storyboard in Resources */,
+				D96F8C6A1A12823A00CCEB81 /* LaunchScreen.xib in Resources */,
+				D96F8C671A12823A00CCEB81 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96F8C6D1A12823A00CCEB81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D96F8C561A12823A00CCEB81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D92841791A1556D900DBE67F /* KeychainQuery.swift in Sources */,
+				D96F8C621A12823A00CCEB81 /* ViewController.swift in Sources */,
+				D92841731A1556D900DBE67F /* GenericKey.swift in Sources */,
+				D92841771A1556D900DBE67F /* KeychainItem.swift in Sources */,
+				D96F8C601A12823A00CCEB81 /* AppDelegate.swift in Sources */,
+				D928417B1A1556D900DBE67F /* KeychainService.swift in Sources */,
+				D92841711A1556D900DBE67F /* ArchiveKey.swift in Sources */,
+				D92841751A1556D900DBE67F /* Keychain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D96F8C6B1A12823A00CCEB81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D92841781A1556D900DBE67F /* KeychainItem.swift in Sources */,
+				D9B834F41A14F64800E4A2DE /* KeychainQueryTests.swift in Sources */,
+				D9C773571A1541C700E18DB9 /* GenericKeyTests.swift in Sources */,
+				D928417C1A1556D900DBE67F /* KeychainService.swift in Sources */,
+				D928417A1A1556D900DBE67F /* KeychainQuery.swift in Sources */,
+				D92841721A1556D900DBE67F /* ArchiveKey.swift in Sources */,
+				D92841741A1556D900DBE67F /* GenericKey.swift in Sources */,
+				D96F8C8C1A1285C500CCEB81 /* KeychainTests.swift in Sources */,
+				D9C773591A15444F00E18DB9 /* ArchiveKeyTests.swift in Sources */,
+				D92841761A1556D900DBE67F /* Keychain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D96F8C711A12823A00CCEB81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D96F8C591A12823A00CCEB81 /* SwiftKeychain */;
+			targetProxy = D96F8C701A12823A00CCEB81 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D96F8C631A12823A00CCEB81 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D96F8C641A12823A00CCEB81 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D96F8C681A12823A00CCEB81 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D96F8C691A12823A00CCEB81 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D96F8C771A12823A00CCEB81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D96F8C781A12823A00CCEB81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D96F8C7A1A12823A00CCEB81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SwiftKeychain/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D96F8C7B1A12823A00CCEB81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SwiftKeychain/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D96F8C7D1A12823A00CCEB81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftKeychainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftKeychain.app/SwiftKeychain";
+			};
+			name = Debug;
+		};
+		D96F8C7E1A12823A00CCEB81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftKeychainTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftKeychain.app/SwiftKeychain";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D96F8C551A12823A00CCEB81 /* Build configuration list for PBXProject "SwiftKeychain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96F8C771A12823A00CCEB81 /* Debug */,
+				D96F8C781A12823A00CCEB81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96F8C791A12823A00CCEB81 /* Build configuration list for PBXNativeTarget "SwiftKeychain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96F8C7A1A12823A00CCEB81 /* Debug */,
+				D96F8C7B1A12823A00CCEB81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D96F8C7C1A12823A00CCEB81 /* Build configuration list for PBXNativeTarget "SwiftKeychainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96F8C7D1A12823A00CCEB81 /* Debug */,
+				D96F8C7E1A12823A00CCEB81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D96F8C521A12823A00CCEB81 /* Project object */;
+}
