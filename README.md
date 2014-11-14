@@ -1,5 +1,5 @@
 #SwiftKeychain
-An elegant Swift wrapper for the Apple Keychain API, made for iOS. Take a look at the class diagram to find out how the SwiftKeychain will fit inside your project *(Figure 1)*:
+An elegant Swift wrapper around the Apple Keychain API, made for iOS. Take a look at the class diagram to find out how the SwiftKeychain will fit inside your project *(Figure 1)*:
 
 ![SwiftKeychain UML class diagram](https://raw.githubusercontent.com/yankodimitrov/SwiftKeychain/master/class-diagram.jpg "Figure 1. SwiftKeychain UML class diagram")
 
@@ -106,7 +106,7 @@ if let user = keychain.get(userKey).item?.object as? NSDictionary {
     let name = user["name"] as String
     let age = user["age"] as Int
     
-    println("name: \(name)], age: \(age)")
+    println("name: \(name), age: \(age)")
 }
 
 ```
