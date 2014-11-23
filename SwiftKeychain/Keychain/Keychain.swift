@@ -68,7 +68,7 @@ public class Keychain: KeychainService {
         
         let status = SecItemAdd(query.fields, nil)
         
-        if status != 0 {
+        if status != errSecSuccess {
             
             return errorForStatusCode(status)
         }
@@ -88,7 +88,7 @@ public class Keychain: KeychainService {
         let query = key.makeQueryForKeychain(self)
         let status = SecItemUpdate(query.fields, changes)
         
-        if status != 0 {
+        if status != errSecSuccess {
             
             return errorForStatusCode(status)
         }
@@ -101,7 +101,7 @@ public class Keychain: KeychainService {
         let query = key.makeQueryForKeychain(self)
         let status = SecItemDelete(query.fields)
         
-        if status != 0 {
+        if status != errSecSuccess {
             
             return errorForStatusCode(status)
         }
@@ -114,15 +114,20 @@ public class Keychain: KeychainService {
         var query = key.makeQueryForKeychain(self)
             query.shouldReturnData()
         
-        var result: Unmanaged<AnyObject>?
-        let status = SecItemCopyMatching(query.fields, &result)
+        var result: AnyObject?
         
-        if status != 0 {
+        let status = withUnsafeMutablePointer(&result) {
+            cfPointer -> OSStatus in
+        
+            SecItemCopyMatching(query.fields, UnsafeMutablePointer(cfPointer))
+        }
+        
+        if status != errSecSuccess {
             
             return (nil, errorForStatusCode(status))
         }
         
-        if let resultData = result?.takeRetainedValue() as? NSData {
+        if let resultData = result as? NSData {
             
             key.unlockData(resultData)
             
