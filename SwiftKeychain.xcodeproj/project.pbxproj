@@ -225,7 +225,7 @@
 		D96F8C521A12823A00CCEB81 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Yanko Dimitrov";
 				TargetAttributes = {
 					D96F8C591A12823A00CCEB81 = {
@@ -419,7 +419,6 @@
 		D96F8C7A1A12823A00CCEB81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftKeychain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -430,7 +429,6 @@
 		D96F8C7B1A12823A00CCEB81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftKeychain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

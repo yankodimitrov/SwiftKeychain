@@ -20,7 +20,7 @@ class KeychainQueryTests: XCTestCase {
         func add(key: KeychainItem) -> NSError? { return nil }
         func update(key: KeychainItem) -> NSError? { return nil }
         func remove(key: KeychainItem) -> NSError? { return nil }
-        func get<T: KeychainItem>(key: T) -> (item: T?, error: NSError?) { return (nil, nil) }
+        func get<T: BaseKey>(key: T) -> (item: T?, error: NSError?) { return (nil, nil) }
     }
     
     var fakeKeychain: KeychainStub!

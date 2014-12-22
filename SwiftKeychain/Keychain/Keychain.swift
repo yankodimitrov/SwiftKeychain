@@ -109,7 +109,7 @@ public class Keychain: KeychainService {
         return nil
     }
     
-    public func get<T: KeychainItem>(key: T) -> (item: T?, error: NSError?) {
+    public func get<T: BaseKey>(key: T) -> (item: T?, error: NSError?) {
         
         var query = key.makeQueryForKeychain(self)
             query.shouldReturnData()

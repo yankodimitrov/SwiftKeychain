@@ -5,6 +5,9 @@ An elegant Swift wrapper around the Apple Keychain API, made for iOS. Take a loo
 
 *Figure 1: SwiftKeychain UML class diagram*
 
+## Update
+Apparently the Swift compiler don’t like the *KeychainItem* protocol as a generic method type constraint. To fix the issue I introduced a concrete implementation of that protocol in the form of *BaseKey* class and use it for the type constraint in the generic method instead. The *BaseKey* class is also used as a base class for the *GenericKey* and *ArchiveKey* classes.
+
 ##Installation
 - Add the <code>Security.framework</code> to your target
 - Copy the contents of the <code>SwiftKeychain/Keychain</code> folder to your project:
