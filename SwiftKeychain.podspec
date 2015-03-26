@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/yankodimitrov/SwiftKeychain.git", :tag => "v#{s.version}" }
   s.source_files  = "SwiftKeychain/Keychain/*.swift"
   
+  s.framework  = "Security"
+
   s.requires_arc = true
 
 end
