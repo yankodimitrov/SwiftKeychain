@@ -29,14 +29,14 @@ public class Keychain: KeychainService {
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
-    init(serviceName name: String, accessMode: String = kSecAttrAccessibleWhenUnlocked, group: String? = nil) {
+    public init(serviceName name: String, accessMode: String = kSecAttrAccessibleWhenUnlocked, group: String? = nil) {
         
         self.accessMode = accessMode
         serviceName = name
         accessGroup = group
     }
     
-    convenience init() {
+    public convenience init() {
         
         self.init(serviceName: "swift.keychain")
     }

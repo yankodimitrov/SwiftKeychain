@@ -12,7 +12,7 @@ public class KeychainQuery {
     
     private lazy var queryFields = NSMutableDictionary()
     
-    var fields: NSDictionary {
+    public var fields: NSDictionary {
         
         return queryFields
     }
@@ -21,7 +21,7 @@ public class KeychainQuery {
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
-    init(keychain: KeychainService) {
+    public init(keychain: KeychainService) {
         
         addField(kSecAttrAccessible, withValue: keychain.accessMode)
         
@@ -35,17 +35,17 @@ public class KeychainQuery {
     // MARK: - Methods
     ///////////////////////////////////////////////////////
     
-    func shouldReturnData() {
+    public func shouldReturnData() {
         
         addField(kSecReturnData, withValue: true)
     }
     
-    func addField(field: String, withValue value: AnyObject) {
+    public func addField(field: String, withValue value: AnyObject) {
         
         queryFields.setObject(value, forKey: field)
     }
     
-    func addFields(fields: NSDictionary) {
+    public func addFields(fields: NSDictionary) {
         
         queryFields.addEntriesFromDictionary(fields)
     }

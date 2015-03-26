@@ -48,12 +48,12 @@ public class BaseKey: KeychainItem {
         return keyName
     }
     
-    init(name: String) {
+    public init(name: String) {
         
         keyName = name
     }
     
-     public func makeQueryForKeychain(keychain: KeychainService) -> KeychainQuery {
+    public func makeQueryForKeychain(keychain: KeychainService) -> KeychainQuery {
         
         assertionFailure("should be overridden in subclass")
         

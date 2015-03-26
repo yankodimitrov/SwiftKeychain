@@ -21,7 +21,7 @@ public class GenericKey: BaseKey {
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
-    init(keyName: String, value: String? = nil) {
+    public init(keyName: String, value: String? = nil) {
         
         self.value = value
         super.init(name: keyName)

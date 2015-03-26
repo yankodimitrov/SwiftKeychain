@@ -26,7 +26,7 @@ public class ArchiveKey: BaseKey {
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
-    init(keyName: String, object: NSCoding? = nil) {
+    public init(keyName: String, object: NSCoding? = nil) {
         
         self.object = object
         super.init(name: keyName)
