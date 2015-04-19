@@ -13,7 +13,7 @@ class KeychainQueryTests: XCTestCase {
     
     class KeychainStub: KeychainService {
         
-        let accessMode: String = "mode"
+        let accessMode: NSString = "mode"
         let serviceName = "fake.service"
         var accessGroup: String?
         
@@ -38,8 +38,8 @@ class KeychainQueryTests: XCTestCase {
         let query = KeychainQuery(keychain: fakeKeychain)
         let fields = query.fields
         
-        let accessMode = fields.objectForKey(kSecAttrAccessible) as String
-        let accessGroup = fields.objectForKey(kSecAttrAccessGroup) as String
+        let accessMode = fields.objectForKey(kSecAttrAccessible) as! NSString
+        let accessGroup = fields.objectForKey(kSecAttrAccessGroup) as! NSString
         
         XCTAssertEqual(accessMode, "mode", "Accessible attribute mismatch")
         XCTAssertEqual(accessGroup, group, "Access group attribute mismatch")
@@ -52,7 +52,7 @@ class KeychainQueryTests: XCTestCase {
         
         let fields = query.fields
         
-        let returnDataField = fields.objectForKey(kSecReturnData) as Bool
+        let returnDataField = fields.objectForKey(kSecReturnData) as! Bool
         
         XCTAssertTrue(returnDataField, "We should be able to set the return data field to true")
     }

@@ -47,9 +47,9 @@ public class ArchiveKey: BaseKey {
         return query
     }
     
-    public override func fieldsToLock() -> NSDictionary {
+    public override func fieldsToLock() -> [NSObject: AnyObject] {
         
-        var fields = NSMutableDictionary()
+        var fields = [NSObject: AnyObject]()
         
         if let data = secretData {
             

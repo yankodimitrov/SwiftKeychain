@@ -50,7 +50,7 @@ class ArchiveKeyTests: XCTestCase {
         
         key.unlockData(data)
         
-        let decodedUser = key.object! as NSDictionary
+        let decodedUser = key.object! as! [NSObject: AnyObject]
         
         XCTAssertEqual(user, decodedUser, "Should decode the object data stored in the keychain")
     }

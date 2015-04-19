@@ -10,7 +10,7 @@ import Foundation
 
 public class Keychain: KeychainService {
     
-    public let accessMode: String
+    public let accessMode: NSString
     public let serviceName: String
     public var accessGroup: String?
     private let errorDomain = "swift.keychain.error.domain"
@@ -29,7 +29,7 @@ public class Keychain: KeychainService {
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
-    public init(serviceName name: String, accessMode: String = kSecAttrAccessibleWhenUnlocked, group: String? = nil) {
+    public init(serviceName name: String, accessMode: NSString = kSecAttrAccessibleWhenUnlocked, group: String? = nil) {
         
         self.accessMode = accessMode
         serviceName = name

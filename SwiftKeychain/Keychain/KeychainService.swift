@@ -10,7 +10,7 @@ import Foundation
 
 public protocol KeychainService {
     
-    var accessMode: String {get}
+    var accessMode: NSString {get}
     var serviceName: String {get}
     var accessGroup: String? {get set}
     

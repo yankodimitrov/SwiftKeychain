@@ -21,7 +21,7 @@ public class GenericKey: BaseKey {
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
-    public init(keyName: String, value: String? = nil) {
+    public init(keyName: String, value: NSString? = nil) {
         
         self.value = value
         super.init(name: keyName)
@@ -42,9 +42,9 @@ public class GenericKey: BaseKey {
         return query
     }
     
-    public override func fieldsToLock() -> NSDictionary {
+    public override func fieldsToLock() -> [NSObject: AnyObject] {
         
-        var fields = NSMutableDictionary()
+        var fields = [NSObject: AnyObject]()
         
         if let data = secretData {
             

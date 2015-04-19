@@ -25,7 +25,7 @@ public protocol KeychainItem {
         
         :returns: dictionary
     */
-    func fieldsToLock() -> NSDictionary
+    func fieldsToLock() -> [NSObject: AnyObject]
     
     /**
         Decodes the obtained from the Keychain data
@@ -60,11 +60,11 @@ public class BaseKey: KeychainItem {
         return KeychainQuery(keychain: keychain)
     }
     
-    public func fieldsToLock() -> NSDictionary {
+    public func fieldsToLock() -> [NSObject: AnyObject] {
         
         assertionFailure("should be overridden in subclass")
         
-        return NSDictionary()
+        return [NSObject: AnyObject]()
     }
     
     public func unlockData(data: NSData) {

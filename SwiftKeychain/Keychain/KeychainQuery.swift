@@ -40,12 +40,12 @@ public class KeychainQuery {
         addField(kSecReturnData, withValue: true)
     }
     
-    public func addField(field: String, withValue value: AnyObject) {
+    public func addField(field: NSString, withValue value: AnyObject) {
         
         queryFields.setObject(value, forKey: field)
     }
     
-    public func addFields(fields: NSDictionary) {
+    public func addFields(fields: [NSObject: AnyObject]) {
         
         queryFields.addEntriesFromDictionary(fields)
     }
