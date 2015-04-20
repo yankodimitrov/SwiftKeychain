@@ -76,10 +76,14 @@ public class Keychain: KeychainService {
         return nil
     }
     
+    /**
+        Updates or adds the given keychain item.
+        
+        :param: key The keychain item to update or add
+        :returns: An NSError if something goes wrong, nil otherwise
+     */
     public func update(key: KeychainItem) -> NSError? {
-        
         let changes = key.fieldsToLock()
-        
         if changes.count == 0 {
             
             return errorForStatusCode(errSecParam)
@@ -89,7 +93,9 @@ public class Keychain: KeychainService {
         let status = SecItemUpdate(query.fields, changes)
         
         if status != errSecSuccess {
-            
+            if status == errSecItemNotFound {
+                return add(key)
+            }
             return errorForStatusCode(status)
         }
         
