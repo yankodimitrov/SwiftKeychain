@@ -15,15 +15,12 @@ public class Keychain: KeychainService {
     public var accessGroup: String?
     private let errorDomain = "swift.keychain.error.domain"
     
+    private static var singleton = Keychain()
+
     public class var sharedKeychain: Keychain {
-        
-        struct Singleton {
-            
-            static let instance = Keychain()
-        }
-        
-        return Singleton.instance
+        return singleton
     }
+
     
     ///////////////////////////////////////////////////////
     // MARK: - Initializers
@@ -135,5 +132,13 @@ public class Keychain: KeychainService {
         }
         
         return (nil, nil)
+    }
+}
+///////////////////////////////////////////////////////
+// MARK: - Unit testing
+///////////////////////////////////////////////////////
+extension Keychain {
+    public class func setTestingInstance(mockKeychain: Keychain) {
+        singleton = mockKeychain
     }
 }
