@@ -119,3 +119,11 @@ public class Keychain: KeychainService {
         return (nil, nil)
     }
 }
+///////////////////////////////////////////////////////
+// MARK: - Unit testing
+///////////////////////////////////////////////////////
+extension Keychain {
+    public class func setTestingInstance(mockKeychain: Keychain) {
+        singleton = mockKeychain
+    }
+}
