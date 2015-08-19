@@ -51,7 +51,7 @@ public class Keychain: KeychainService {
         }
         
         let query = key.makeQueryForKeychain(self)
-		query.addFields(secretFields)
+        query.addFields(secretFields)
         
         let status = SecItemAdd(query.fields, nil)
         if status != errSecSuccess {
@@ -100,7 +100,7 @@ public class Keychain: KeychainService {
     
     public func get<T: BaseKey>(key: T) -> (item: T?, error: NSError?) {
         let query = key.makeQueryForKeychain(self)
-		query.shouldReturnData()
+        query.shouldReturnData()
         
         var result: AnyObject?
         let status = withUnsafeMutablePointer(&result) { cfPointer -> OSStatus in
