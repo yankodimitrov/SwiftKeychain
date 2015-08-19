@@ -15,31 +15,24 @@ public class Keychain: KeychainService {
     public var accessGroup: String?
     private let errorDomain = "swift.keychain.error.domain"
     
-    private static var singleton = Keychain()
-
-    public class var sharedKeychain: Keychain {
-        return singleton
-    }
-
+	static let sharedKeychain: Keychain = Keychain()
     
     ///////////////////////////////////////////////////////
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
     public init(serviceName name: String, accessMode: NSString = kSecAttrAccessibleWhenUnlocked, group: String? = nil) {
-        
         self.accessMode = accessMode
         serviceName = name
         accessGroup = group
     }
     
     public convenience init() {
-        
         self.init(serviceName: "swift.keychain")
     }
     
     ///////////////////////////////////////////////////////
-    // MARK: - Methods
+    // MARK: - Errors
     ///////////////////////////////////////////////////////
     
     private func errorForStatusCode(statusCode: OSStatus) -> NSError {
@@ -52,31 +45,30 @@ public class Keychain: KeychainService {
     ///////////////////////////////////////////////////////
     
     public func add(key: KeychainItem) -> NSError? {
-        
         let secretFields = key.fieldsToLock()
-        
         if secretFields.count == 0 {
-            
             return errorForStatusCode(errSecParam)
         }
         
         let query = key.makeQueryForKeychain(self)
-            query.addFields(secretFields)
+        query.addFields(secretFields)
         
         let status = SecItemAdd(query.fields, nil)
-        
         if status != errSecSuccess {
-            
             return errorForStatusCode(status)
         }
         
         return nil
     }
     
+    /**
+        Updates or adds the given keychain item.
+        
+        :param: key The keychain item to update or add
+        :returns: An NSError if something goes wrong, nil otherwise
+     */
     public func update(key: KeychainItem) -> NSError? {
-        
         let changes = key.fieldsToLock()
-        
         if changes.count == 0 {
             
             return errorForStatusCode(errSecParam)
@@ -86,7 +78,9 @@ public class Keychain: KeychainService {
         let status = SecItemUpdate(query.fields, changes)
         
         if status != errSecSuccess {
-            
+            if status == errSecItemNotFound {
+                return add(key)
+            }
             return errorForStatusCode(status)
         }
         
@@ -94,12 +88,10 @@ public class Keychain: KeychainService {
     }
     
     public func remove(key: KeychainItem) -> NSError? {
-        
         let query = key.makeQueryForKeychain(self)
         let status = SecItemDelete(query.fields)
         
         if status != errSecSuccess {
-            
             return errorForStatusCode(status)
         }
         
@@ -107,27 +99,20 @@ public class Keychain: KeychainService {
     }
     
     public func get<T: BaseKey>(key: T) -> (item: T?, error: NSError?) {
-        
-        var query = key.makeQueryForKeychain(self)
-            query.shouldReturnData()
+        let query = key.makeQueryForKeychain(self)
+        query.shouldReturnData()
         
         var result: AnyObject?
-        
-        let status = withUnsafeMutablePointer(&result) {
-            cfPointer -> OSStatus in
-        
+        let status = withUnsafeMutablePointer(&result) { cfPointer -> OSStatus in
             SecItemCopyMatching(query.fields, UnsafeMutablePointer(cfPointer))
         }
         
         if status != errSecSuccess {
-            
             return (nil, errorForStatusCode(status))
         }
         
         if let resultData = result as? NSData {
-            
             key.unlockData(resultData)
-            
             return (key, nil)
         }
         
