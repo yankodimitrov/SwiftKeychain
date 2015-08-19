@@ -15,14 +15,16 @@ public class Keychain: KeychainService {
     public var accessGroup: String?
     private let errorDomain = "swift.keychain.error.domain"
     
-	static let sharedKeychain: Keychain = Keychain()
+	static var sharedKeychain: Keychain = Keychain()
     
     ///////////////////////////////////////////////////////
     // MARK: - Initializers
     ///////////////////////////////////////////////////////
     
     public init(serviceName name: String, accessMode: NSString = kSecAttrAccessibleWhenUnlocked, group: String? = nil) {
+        
         self.accessMode = accessMode
+        
         serviceName = name
         accessGroup = group
     }
@@ -45,15 +47,19 @@ public class Keychain: KeychainService {
     ///////////////////////////////////////////////////////
     
     public func add(key: KeychainItem) -> NSError? {
+        
         let secretFields = key.fieldsToLock()
+        
         if secretFields.count == 0 {
             return errorForStatusCode(errSecParam)
         }
         
         let query = key.makeQueryForKeychain(self)
+        
         query.addFields(secretFields)
         
         let status = SecItemAdd(query.fields, nil)
+        
         if status != errSecSuccess {
             return errorForStatusCode(status)
         }
@@ -68,6 +74,7 @@ public class Keychain: KeychainService {
         :returns: An NSError if something goes wrong, nil otherwise
      */
     public func update(key: KeychainItem) -> NSError? {
+        
         let changes = key.fieldsToLock()
         if changes.count == 0 {
             
@@ -78,9 +85,11 @@ public class Keychain: KeychainService {
         let status = SecItemUpdate(query.fields, changes)
         
         if status != errSecSuccess {
+            
             if status == errSecItemNotFound {
                 return add(key)
             }
+            
             return errorForStatusCode(status)
         }
         
@@ -88,6 +97,7 @@ public class Keychain: KeychainService {
     }
     
     public func remove(key: KeychainItem) -> NSError? {
+        
         let query = key.makeQueryForKeychain(self)
         let status = SecItemDelete(query.fields)
         
@@ -99,7 +109,9 @@ public class Keychain: KeychainService {
     }
     
     public func get<T: BaseKey>(key: T) -> (item: T?, error: NSError?) {
+        
         let query = key.makeQueryForKeychain(self)
+        
         query.shouldReturnData()
         
         var result: AnyObject?
@@ -112,18 +124,24 @@ public class Keychain: KeychainService {
         }
         
         if let resultData = result as? NSData {
+            
             key.unlockData(resultData)
+            
             return (key, nil)
         }
         
         return (nil, nil)
     }
 }
+
 ///////////////////////////////////////////////////////
 // MARK: - Unit testing
 ///////////////////////////////////////////////////////
-extension Keychain {
+
+public extension Keychain {
+    
     public class func setTestingInstance(mockKeychain: Keychain) {
-        singleton = mockKeychain
+        
+        sharedKeychain = mockKeychain
     }
 }

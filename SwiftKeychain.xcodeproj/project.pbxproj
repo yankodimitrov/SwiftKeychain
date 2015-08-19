@@ -156,8 +156,8 @@
 				D928416E1A1556D900DBE67F /* KeychainItem.swift */,
 				D928416F1A1556D900DBE67F /* KeychainQuery.swift */,
 				D928416D1A1556D900DBE67F /* Keychain.swift */,
-				D928416C1A1556D900DBE67F /* GenericKey.swift */,
 				D928416B1A1556D900DBE67F /* ArchiveKey.swift */,
+				D928416C1A1556D900DBE67F /* GenericKey.swift */,
 			);
 			name = Keychain;
 			sourceTree = "<group>";
