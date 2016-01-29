@@ -32,11 +32,11 @@ class ViewController: UIViewController {
         
         if let passcode = keychain.get(key).item?.value {
             
-            println("\(key.name) value: [\(passcode)]")
+            print("\(key.name) value: [\(passcode)]")
             
         } else {
             
-            println("can't find the [\(key.name)] key in the keychain")
+            print("can't find the [\(key.name)] key in the keychain")
         }
     }
     
@@ -50,33 +50,33 @@ class ViewController: UIViewController {
         
         if let error = keychain.add(key) {
         
-            println("error adding the passcode key")
+            print("error adding the passcode key")
             
         } else {
             
-            println(">> added the passcode key")
+            print(">> added the passcode key")
         }
         
         printGenericKey(key)
         
         if let error = keychain.update(updateKey) {
             
-            println("error updating the passcode key")
+            print("error updating the passcode key")
             
         } else {
     
-            println(">> updated the passcode key")
+            print(">> updated the passcode key")
         }
         
         printGenericKey(updateKey)
         
         if let error = keychain.remove(key) {
             
-            println("error deleting the passcode key")
+            print("error deleting the passcode key")
             
         } else {
             
-            println(">> removed the passcode key from the keychain")
+            print(">> removed the passcode key from the keychain")
         }
     }
     

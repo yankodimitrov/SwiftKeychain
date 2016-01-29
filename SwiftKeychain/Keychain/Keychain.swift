@@ -70,8 +70,8 @@ public class Keychain: KeychainService {
     /**
         Updates or adds the given keychain item.
         
-        :param: key The keychain item to update or add
-        :returns: An NSError if something goes wrong, nil otherwise
+        - parameter key: The keychain item to update or add
+        - returns: An NSError if something goes wrong, nil otherwise
      */
     public func update(key: KeychainItem) -> NSError? {
         
