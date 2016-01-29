@@ -1,11 +1,10 @@
 Pod::Spec.new do |s|
-
   s.name         = "SwiftKeychain"
   s.version      = "0.1.5"
   s.summary      = "Swift wrapper around the Apple Keychain API"
 
   s.description  = <<-DESC
-                   An elegant Swift wrapper around the Apple Keychain API, made for iOS.
+                   An elegant Swift wrapper around the Apple Keychain API, made for iOS, tvOS and OSX.
                    DESC
 
   s.homepage     = "https://github.com/yankodimitrov/SwiftKeychain"
@@ -13,14 +12,14 @@ Pod::Spec.new do |s|
   s.author       = { "Yanko Dimitrov" => "yanko@yankodimitrov.com" }
   s.social_media_url   = "https://twitter.com/_yankodimitrov"
 
-  s.platform     = :ios, "8.0"
   s.ios.deployment_target = "8.0"
+  s.osx.deployment_target = "10.9"
+  s.tvos.deployment_target = '9.0'
 
   s.source       = { :git => "https://github.com/yankodimitrov/SwiftKeychain.git", :tag => "v#{s.version}" }
   s.source_files  = "SwiftKeychain/Keychain/*.swift"
-  
+
   s.framework  = "Security"
 
   s.requires_arc = true
-
 end
