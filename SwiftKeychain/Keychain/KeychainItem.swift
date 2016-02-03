@@ -15,7 +15,7 @@ public protocol KeychainItem {
     /**
         Make a KeychainQuery for the specified KeychainService
         
-        :param: keychain - KeychainService instance
+        - parameter keychain: - KeychainService instance
     */
     func makeQueryForKeychain(keychain: KeychainService) -> KeychainQuery
     
@@ -23,14 +23,14 @@ public protocol KeychainItem {
         Returns a dictionary wtih the Keychain fields and their values
         that will be saved in the Keychain.
         
-        :returns: dictionary
+        - returns: dictionary
     */
     func fieldsToLock() -> [NSObject: AnyObject]
     
     /**
         Decodes the obtained from the Keychain data
         
-        :param: data - the NSData stored in the Keychain
+        - parameter data: - the NSData stored in the Keychain
     */
     func unlockData(data: NSData)
 }
