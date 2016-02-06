@@ -84,7 +84,7 @@ do {
 ```
 
 ## Installation
-SwiftKeychain required Swift 2.0 and XCode 7 and supports iOS, OSX, watchOS and tvOS.
+SwiftKeychain requires Swift 2.0 and XCode 7 and supports iOS, OSX, watchOS and tvOS.
 
 #### Manually
 Copy the <code>Keychain/Keychain.swift</code> file to your project.
