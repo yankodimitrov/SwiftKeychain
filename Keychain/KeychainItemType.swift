@@ -17,3 +17,11 @@ public protocol KeychainItemType {
     var data: [String: AnyObject] {get set}
     var dataToStore: [String: AnyObject] {get}
 }
+
+extension KeychainItemType {
+    
+    public var accessMode: String {
+        
+        return String(kSecAttrAccessibleWhenUnlocked)
+    }
+}
