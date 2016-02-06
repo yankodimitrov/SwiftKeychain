@@ -37,4 +37,11 @@ extension KeychainItemType {
         
         return itemAttributes
     }
+    
+    internal func dataFromAttributes(attributes: [String: AnyObject]) -> [String: AnyObject]? {
+        
+        guard let valueData = attributes[String(kSecValueData)] as? NSData else { return nil }
+        
+        return NSKeyedUnarchiver.unarchiveObjectWithData(valueData) as? [String: AnyObject] ?? nil
+    }
 }

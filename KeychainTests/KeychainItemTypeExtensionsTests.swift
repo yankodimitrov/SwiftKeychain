@@ -48,4 +48,39 @@ class KeychainItemTypeExtensionsTests: XCTestCase {
         XCTAssertEqual(secClass, expectedSecClass, "Should contain the returned attributes")
         XCTAssertEqual(secValueData, expectedData, "Should contain the key data")
     }
+    
+    func testDataFromAttributes() {
+        
+        let item = MockKeychainItem()
+        let attributes = item.attributesToSave
+        var token = ""
+        
+        if let itemToken = item.dataFromAttributes(attributes)?["token"] as? String {
+            
+            token = itemToken
+        }
+        
+        XCTAssertEqual(token, "123456", "Should return the item data dictionary")
+    }
+    
+    func testDataFromAttributesWillReturnNilWhenThereIsNoData() {
+        
+        let item = MockKeychainItem()
+        let attributes = ["a": "b"]
+        
+        let data = item.dataFromAttributes(attributes)
+        
+        XCTAssertNil(data, "Should return nil if there is no data")
+    }
+    
+    func testDataFromAttributesWillReturnNilWhenDataIsNotDictionary() {
+        
+        let item = MockKeychainItem()
+        let itemData = NSKeyedArchiver.archivedDataWithRootObject(["a"])
+        let attributes = [String(kSecValueData): itemData]
+        let data = item.dataFromAttributes(attributes)
+        
+        XCTAssertNil(data, "Should return nil if the data is not a dictionary")
+    }
+
 }
