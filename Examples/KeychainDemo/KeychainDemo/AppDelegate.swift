@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
             try newAccount.saveInKeychain()
             
-            print("> saved item in keychain")
+            print("> saved the account in the Keychain")
             
         } catch {
             
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             try account.fetchFromKeychain()
             
-            print("> fetched item from keychain")
+            print("> fetched the account data from the Keychain")
             
             if let token = account.accessToken {
             
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             try account.removeFromKeychain()
             
-            print("> removed item from keychain")
+            print("> removed the account from the Keychain")
             
         } catch {
             
