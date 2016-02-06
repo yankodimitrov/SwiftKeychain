@@ -1,128 +1,105 @@
 #SwiftKeychain
-An elegant Swift wrapper around the Apple Keychain API, made for iOS. Take a look at the class diagram to find out how the SwiftKeychain will fit inside your project *(Figure 1)*:
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-![SwiftKeychain UML class diagram](https://raw.githubusercontent.com/yankodimitrov/SwiftKeychain/master/class-diagram.jpg "Figure 1. SwiftKeychain UML class diagram")
+## Abstract
+Swift wrapper for working with the Keychain API implemented with Protocol Oriented Programming.
 
-*Figure 1: SwiftKeychain UML class diagram*
+You create an implementation of the <code>KeychainGenericPasswordType</code> protocol that encapsulates the data that you want to store in the <code>Keychain</code>. Most of the implementation is done for you by using default protocol implementations, such as setting the default service name and access mode (<code>kSecAttrAccessibleWhenUnlocked</code>).
 
-## Update
-Apparently the Swift compiler don’t like the *KeychainItem* protocol as a generic method type constraint. To fix the issue I introduced a concrete implementation of that protocol in the form of *BaseKey* class and use it for the type constraint in the generic method instead. The *BaseKey* class is also used as a base class for the *GenericKey* and *ArchiveKey* classes.
+Then you call the <code>KeychainItemType</code> methods to save, remove or fetch the item from the provided as argument <code>KeychainServiceType</code> protocol implementation.
 
-##Installation
+![SwiftKeychain Protocols](https://raw.githubusercontent.com/yankodimitrov/SwiftKeychain/Keychain-1.0/Resources/Protocols.png)
 
-#### CocoaPods
-Add the pod <code>SwiftKeychain</code> to your <code>Podfile</code>:
+Let's say we want to store the access token and username for an Instagram account in the Keychain:
 
-<code>pod “SwiftKeychain”</code>
+```swift
+struct InstagramAccount: KeychainGenericPasswordType {
+    
+    let accountName: String
+    let token: String
+    var data = [String: AnyObject]()
+    
+    var dataToStore: [String: AnyObject] {
+        return ["token": token]
+    }
+    
+    var accessToken: String? {
+        return data["token"] as? String
+    }
+    
+    init(name: String, accessToken: String = "") {
+        accountName = name
+        token = accessToken
+    }
+}
+```
+In <code>var dataToStore: [String: AnyObject]</code> you return the Dictionary that you want to be saved in the Keychain and when you fetch the item from the Keychain its data will be populated in your <code>var data: [String: AnyObject]</code> property.
+
+### Save Item
+```swift
+let newAccount = InstagramAccount(name: "John", accessToken: "123456")
+
+do {
+    
+    try newAccount.saveInKeychain()
+
+} catch {
+    
+    print(error)
+}
+```
+*Note:* The provied implementation of the <code>KeychainServiceType</code> protocol will replace the item if it already exists in the Keychain database.
+
+### Remove Item
+```swift
+let account = InstagramAccount(name: "John")
+
+do {
+    
+    try account.removeFromKeychain()
+
+} catch {
+    
+    print(error)
+}
+```
+
+### Fetch Item
+```swift
+var account = InstagramAccount(name: "John")
+
+do {
+    
+    try account.fetchFromKeychain()
+    
+    if let token = account.accessToken {
+
+        print("name: \(account.accountName), token: \(token)")
+    }
+
+} catch {
+
+    print(error)
+}
+```
+
+## Installation
+SwiftKeychain requires Swift 2.0 and XCode 7 and supports iOS, OSX, watchOS and tvOS.
 
 #### Manually
-- Add the <code>Security.framework</code> to your target
-- Copy the contents of the <code>SwiftKeychain/Keychain</code> folder to your project:
-    - <code>KeychainService.swift</code>
-    - <code>KeychainItem.swift</code>
-    - <code>KeychainQuery.swift</code>
-    - <code>Keychain.swift</code>
-    - <code>GenericKey.swift</code>
-    - <code>ArchiveKey.swift</code>
+Copy the <code>Keychain/Keychain.swift</code> file to your project.
 
-##Usage
-You can create an instance of the <code>Keychain</code> class or you can use the Singleton instance by accessing the <code>sharedKeychain</code> class property.
-
-The default Keychain items access mode is set to <code>kSecAttrAccessibleWhenUnlocked</code>, but you can change that by passing the appropirate value in the <code>Keychain</code> designated initializer.
-
-The <code>Keychain</code> class works with objects conforming to <code>KeychainItem</code> protocol. There are two concrete implementations included, that will cover most of the use case scenarios: <code>GenericKey</code> and <code>ArchiveKey</code>. Of course you can always drop in your own, just conform to the <code>KeychainItem</code> protocol.
-
-####GenericKey
-Use an instance of the <code>GenericKey</code> class to store, obtain, update or delete a string value in/from the Keychain.
-
-####ArchiveKey
-Use the <code>ArchiveKey</code> class to store, obtain, update or delete an object that conforms to <code>NSCoding</code> protocol in/from the Keychain. 
-
-###Adding an item
-
-#####GenericKey
+#### Carthage
+Add the following line to your [Cartfile](https://github.com/carthage/carthage)
 ```swift
-let passcodeKey = GenericKey(keyName: "passcode", value: "1234")
-let keychain = Keychain()
-
-if let error = keychain.add(passcodeKey) {
-    
-    // handle the error
-}
-
+github "yankodimitrov/SwiftKeychain" "master"
 ```
 
-#####ArchiveKey
+#### CocoaPods
+Add the following line to your [Podfile](https://guides.cocoapods.org/)
 ```swift
-let user = ["name": "Mike", "age": 30]
-
-let userKey = ArchiveKey(keyName: "user", object: user)
-let keychain = Keychain()
-
-if let error = keychain.add(userKey) {
-    
-    // handle the error
-}
-
+pod “SwiftKeychain”
 ```
 
-###Updating an item
-
-```swift
-let passcodeKey = GenericKey(keyName: "passcode", value: "5678")
-let keychain = Keychain()
-
-if let error = keychain.update(passcodeKey) {
-    
-    // handle the error
-}
-```
-
-###Removing an item
-
-```swift
-let passcodeKey = GenericKey(keyName: "passcode")
-let keychain = Keychain()
-
-if let error = keychain.remove(passcodeKey) {
-    
-    // handle the error
-}
-```
-
-###Obtaining an item
-
-#####GenericKey
-```swift
-let passcodeKey = GenericKey(keyName: "passcode")
-let keychain = Keychain()
-
-if let passcode = keychain.get(passcodeKey).item?.value {
-    
-    println("passcode is: \(passcode)")
-}
-```
-
-#####ArchiveKey
-```swift
-// assuming that we have saved the following dictionary in the Keychain:
-// let user = ["name": "Mike", "age": 30]
-
-let userKey = ArchiveKey(keyName: "user")
-let keychain = Keychain()
-
-if let user = keychain.get(userKey).item?.object as? NSDictionary {
-        
-    let name = user["name"] as String
-    let age = user["age"] as Int
-    
-    println("name: \(name), age: \(age)")
-}
-
-```
-
-##Tests?
-Yes, you can find them in the <code>SwiftKeychainTests</code> folder.
-
-##License
+## License
 SwiftKeychain is released under the MIT license. See the LICENSE.txt file for more info.
