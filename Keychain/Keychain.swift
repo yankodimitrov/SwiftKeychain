@@ -53,6 +53,16 @@ extension KeychainItemType {
         
         return NSKeyedUnarchiver.unarchiveObjectWithData(valueData) as? [String: AnyObject] ?? nil
     }
+    
+    internal var attributesForFetch: [String: AnyObject] {
+        
+        var itemAttributes = attributes
+        
+        itemAttributes[String(kSecReturnData)] = true
+        itemAttributes[String(kSecReturnAttributes)] = true
+        
+        return itemAttributes
+    }
 }
 
 // MARK: - KeychainGenericPasswordType

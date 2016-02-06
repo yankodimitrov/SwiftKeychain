@@ -102,17 +102,11 @@ class KeychainTests: XCTestCase {
         var hasError = false
         var fetchedToken = ""
         
-        var attributes = item.attributesToSave
-        
-        attributes[String(kSecReturnData)] = true
-        attributes[String(kSecReturnAttributes)] = true
-        
-        
         try! keychain.insertItemWithAttributes(item.attributesToSave)
         
         do {
             
-            if let fetchedItem = try keychain.fetchItemWithAttributes(attributes) {
+            if let fetchedItem = try keychain.fetchItemWithAttributes(item.attributesForFetch) {
                 
                 if let data = item.dataFromAttributes(fetchedItem) {
                 

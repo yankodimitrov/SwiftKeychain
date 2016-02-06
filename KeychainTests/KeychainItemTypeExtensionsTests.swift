@@ -82,5 +82,17 @@ class KeychainItemTypeExtensionsTests: XCTestCase {
         
         XCTAssertNil(data, "Should return nil if the data is not a dictionary")
     }
-
+    
+    
+    func testAttributesForFetch() {
+        
+        let item = MockKeychainItem()
+        let attributes = item.attributesForFetch
+        
+        let secReturnData = attributes[String(kSecReturnData)] as? Bool ?? false
+        let secReturnAttributes = attributes[String(kSecReturnAttributes)] as? Bool ?? false
+        
+        XCTAssertEqual(secReturnData, true, "Should contain true in kSecReturnData")
+        XCTAssertEqual(secReturnAttributes, true, "Should contain true in kSecReturnAttributes")
+    }
 }
