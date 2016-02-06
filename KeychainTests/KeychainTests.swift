@@ -94,4 +94,68 @@ class KeychainTests: XCTestCase {
         
         XCTAssertEqual(hasError, true, "Should throw error when the operation fails")
     }
+    
+    func testFetchItemWithAttributes() {
+        
+        let item = MockGenericPasswordItem(accountName: "John")
+        let keychain = Keychain()
+        var hasError = false
+        var fetchedToken = ""
+        
+        var attributes = item.attributesToSave
+        
+        attributes[String(kSecReturnData)] = true
+        attributes[String(kSecReturnAttributes)] = true
+        
+        
+        try! keychain.insertItemWithAttributes(item.attributesToSave)
+        
+        do {
+            
+            if let fetchedItem = try keychain.fetchItemWithAttributes(attributes) {
+                
+                if let data = item.dataFromAttributes(fetchedItem) {
+                
+                    fetchedToken = data["token"] as? String ?? ""
+                }
+            }
+            
+        } catch {
+            
+            hasError = true
+        }
+        
+        XCTAssertEqual(hasError, false, "Should fetch the keychain item from the Keychain")
+        XCTAssertEqual(fetchedToken, "123456", "Should return the keychain item data")
+    }
+    
+    func testFetchItemWithAttributesThrowsError() {
+        
+        let attributes = ["a": "b"]
+        let keychain = Keychain()
+        var hasError = false
+        
+        do {
+            
+            try keychain.fetchItemWithAttributes(attributes)
+            
+        } catch {
+            
+            hasError = true
+        }
+        
+        XCTAssertEqual(hasError, true, "Should throw error when the operation fails")
+    }
+    
+    func testFetchItemWithAttributesReturnsNilIfResultIsNotADictionary() {
+        
+        let item = MockGenericPasswordItem(accountName: "John")
+        let keychain = Keychain()
+        
+        try! keychain.insertItemWithAttributes(item.attributes)
+        
+        let result = try! keychain.fetchItemWithAttributes(item.attributes)
+        
+        XCTAssertNil(result, "Should return nil if the result is not a dictionary")
+    }
 }

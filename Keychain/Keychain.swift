@@ -122,6 +122,23 @@ public struct Keychain: KeychainServiceType {
     
     public func fetchItemWithAttributes(attributes: [String: AnyObject]) throws -> [String: AnyObject]? {
         
+        var result: AnyObject?
+        
+        let statusCode = withUnsafeMutablePointer(&result) { pointer in
+            
+            SecItemCopyMatching(attributes, UnsafeMutablePointer(pointer))
+        }
+        
+        if statusCode != errSecSuccess {
+            
+            throw errorForStatusCode(statusCode)
+        }
+        
+        if let result = result as? [String: AnyObject] {
+            
+            return result
+        }
+        
         return nil
     }
 }
