@@ -25,3 +25,16 @@ extension KeychainItemType {
         return String(kSecAttrAccessibleWhenUnlocked)
     }
 }
+
+extension KeychainItemType {
+    
+    internal var attributesToSave: [String: AnyObject] {
+        
+        var itemAttributes = attributes
+        let archivedData = NSKeyedArchiver.archivedDataWithRootObject(dataToStore)
+        
+        itemAttributes[String(kSecValueData)] = archivedData
+        
+        return itemAttributes
+    }
+}

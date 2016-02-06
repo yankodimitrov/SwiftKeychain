@@ -11,6 +11,7 @@
 		C96BE5201C661147005EABC7 /* Keychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96BE5151C661147005EABC7 /* Keychain.framework */; };
 		C96BE5251C661147005EABC7 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96BE5241C661147005EABC7 /* KeychainTests.swift */; };
 		C96BE5321C661201005EABC7 /* KeychainItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96BE5311C661201005EABC7 /* KeychainItemType.swift */; };
+		C96BE5341C661478005EABC7 /* KeychainItemTypeExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96BE5331C661478005EABC7 /* KeychainItemTypeExtensionsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		C96BE5241C661147005EABC7 /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		C96BE5261C661147005EABC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C96BE5311C661201005EABC7 /* KeychainItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemType.swift; sourceTree = "<group>"; };
+		C96BE5331C661478005EABC7 /* KeychainItemTypeExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemTypeExtensionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				C96BE5241C661147005EABC7 /* KeychainTests.swift */,
+				C96BE5331C661478005EABC7 /* KeychainItemTypeExtensionsTests.swift */,
 				C96BE5301C661189005EABC7 /* Supporting Files */,
 			);
 			path = KeychainTests;
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96BE5341C661478005EABC7 /* KeychainItemTypeExtensionsTests.swift in Sources */,
 				C96BE5251C661147005EABC7 /* KeychainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
