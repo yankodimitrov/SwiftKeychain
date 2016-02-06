@@ -8,6 +8,15 @@
 
 import Foundation
 
+// MARK: - KeychainServiceType
+
+public protocol KeychainServiceType {
+    
+    func insertItemWithAttributes(attributes: [String: AnyObject]) throws
+    func removeItemWithAttributes(attributes: [String: AnyObject]) throws
+    func fetchItemWithAttributes(attributes: [String: AnyObject]) throws -> [String: AnyObject]?
+}
+
 // MARK: - KeychainItemType
 
 public protocol KeychainItemType {
