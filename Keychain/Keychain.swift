@@ -1,5 +1,5 @@
 //
-//  KeychainItemType.swift
+//  Keychain.swift
 //  Keychain
 //
 //  Created by Yanko Dimitrov on 2/6/16.
