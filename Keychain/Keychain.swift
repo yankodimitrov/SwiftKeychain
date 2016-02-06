@@ -92,8 +92,22 @@ public struct Keychain: KeychainServiceType {
         return NSError(domain: "swift.keychain.error", code: Int(statusCode), userInfo: nil)
     }
     
+    // Inserts or updates a keychain item with attributes
+    
     public func insertItemWithAttributes(attributes: [String: AnyObject]) throws {
         
+        var statusCode = SecItemAdd(attributes, nil)
+        
+        if statusCode == errSecDuplicateItem {
+            
+            SecItemDelete(attributes)
+            statusCode = SecItemAdd(attributes, nil)
+        }
+        
+        if statusCode != errSecSuccess {
+            
+            throw errorForStatusCode(statusCode)
+        }
     }
     
     public func removeItemWithAttributes(attributes: [String: AnyObject]) throws {
