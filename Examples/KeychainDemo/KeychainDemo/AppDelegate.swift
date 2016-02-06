@@ -27,9 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         var accessToken: String? {
-            get {
-                return data["token"] as? String
-            }
+            
+            return data["token"] as? String
         }
         
         init(name: String, accessToken: String = "") {
