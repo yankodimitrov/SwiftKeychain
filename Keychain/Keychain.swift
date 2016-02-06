@@ -82,3 +82,26 @@ extension KeychainGenericPasswordType {
         return attributes
     }
 }
+
+// MARK: - Keychain
+
+public struct Keychain: KeychainServiceType {
+    
+    internal func errorForStatusCode(statusCode: OSStatus) -> NSError {
+        
+        return NSError(domain: "swift.keychain.error", code: Int(statusCode), userInfo: nil)
+    }
+    
+    public func insertItemWithAttributes(attributes: [String: AnyObject]) throws {
+        
+    }
+    
+    public func removeItemWithAttributes(attributes: [String: AnyObject]) throws {
+        
+    }
+    
+    public func fetchItemWithAttributes(attributes: [String: AnyObject]) throws -> [String: AnyObject]? {
+        
+        return nil
+    }
+}

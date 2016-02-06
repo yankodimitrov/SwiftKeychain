@@ -11,4 +11,13 @@ import XCTest
 
 class KeychainTests: XCTestCase {
     
+    func testErrorForStatusCode() {
+        
+        let keychain = Keychain()
+        
+        let expectedErrorCode = Int(errSecItemNotFound)
+        let error = keychain.errorForStatusCode(errSecItemNotFound)
+        
+        XCTAssertEqual(error.code, expectedErrorCode, "Should return error with status code")
+    }
 }
