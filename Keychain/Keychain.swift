@@ -166,5 +166,15 @@ extension KeychainItemType {
         
         try keychain.removeItemWithAttributes(attributes)
     }
+    
+    public mutating func fetchFromKeychain(keychain: KeychainServiceType = Keychain()) throws -> Self {
+        
+        if  let result = try keychain.fetchItemWithAttributes(attributesForFetch),
+            let itemData = dataFromAttributes(result) {
+            
+            data = itemData
+        }
+        
+        return self
+    }
 }
-

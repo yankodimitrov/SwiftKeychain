@@ -44,7 +44,9 @@ class MockKeychain: KeychainServiceType {
         
         isFetchCalled = true
         
-        return nil
+        let data = NSKeyedArchiver.archivedDataWithRootObject(["token": "123456"])
+        
+        return [String(kSecValueData): data]
     }
 }
 
@@ -138,5 +140,17 @@ class KeychainItemTypeExtensionsTests: XCTestCase {
         try! item.removeFromKeychain(keychain)
         
         XCTAssertEqual(keychain.isRemoveCalled, true, "Should call the keychain to remove the item")
+    }
+    
+    func testFetchFromKeychain() {
+        
+        let keychain = MockKeychain()
+        var item = MockKeychainItem()
+        
+        let result = try! item.fetchFromKeychain(keychain)
+        
+        let token = result.data["token"] as? String ?? ""
+        
+        XCTAssertEqual(token, "123456", "Should populate the item's data from the Keychain")
     }
 }
