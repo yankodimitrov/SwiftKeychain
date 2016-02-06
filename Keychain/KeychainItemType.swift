@@ -56,8 +56,20 @@ public protocol KeychainGenericPasswordType: KeychainItemType {
 
 extension KeychainGenericPasswordType {
     
-    var serviceName: String {
+    public var serviceName: String {
         
         return "swift.keychain.service"
+    }
+    
+    public var attributes: [String: AnyObject] {
+    
+        var attributes = [String: AnyObject]()
+        
+        attributes[String(kSecClass)] = kSecClassGenericPassword
+        attributes[String(kSecAttrAccessible)] = accessMode
+        attributes[String(kSecAttrService)] = serviceName
+        attributes[String(kSecAttrAccount)] = accountName
+        
+        return attributes
     }
 }
