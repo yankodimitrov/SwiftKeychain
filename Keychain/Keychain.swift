@@ -112,6 +112,12 @@ public struct Keychain: KeychainServiceType {
     
     public func removeItemWithAttributes(attributes: [String: AnyObject]) throws {
         
+        let statusCode = SecItemDelete(attributes)
+        
+        if statusCode != errSecSuccess {
+            
+            throw errorForStatusCode(statusCode)
+        }
     }
     
     public func fetchItemWithAttributes(attributes: [String: AnyObject]) throws -> [String: AnyObject]? {

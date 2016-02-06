@@ -56,4 +56,42 @@ class KeychainTests: XCTestCase {
         
         XCTAssertEqual(hasError, true, "Should throw error when the operation fails")
     }
+    
+    func testRemoveItemWithAttributes() {
+        
+        let item = MockGenericPasswordItem(accountName: "John")
+        let keychain = Keychain()
+        var hasError = false
+        
+        try! keychain.insertItemWithAttributes(item.attributes)
+        
+        do {
+        
+            try keychain.removeItemWithAttributes(item.attributes)
+        
+        } catch {
+            
+            hasError = true
+        }
+        
+        XCTAssertEqual(hasError, false, "Should remove item with attributes from the Keychain")
+    }
+    
+    func testRemoveItemWithAttributesThrowsError() {
+        
+        let attributes = ["a": "b"]
+        let keychain = Keychain()
+        var hasError = false
+        
+        do {
+            
+            try keychain.removeItemWithAttributes(attributes)
+            
+        } catch {
+            
+            hasError = true
+        }
+        
+        XCTAssertEqual(hasError, true, "Should throw error when the operation fails")
+    }
 }
