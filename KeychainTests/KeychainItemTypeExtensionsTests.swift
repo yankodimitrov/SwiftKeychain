@@ -127,6 +127,16 @@ class KeychainItemTypeExtensionsTests: XCTestCase {
         
         try! item.saveInKeychain(keychain)
         
-        XCTAssertEqual(keychain.isInsertCalled, true, "Should call the Keychain to insert an item")
+        XCTAssertEqual(keychain.isInsertCalled, true, "Should call the Keychain to insert the item")
+    }
+    
+    func testRemoveFromKeychain() {
+        
+        let keychain = MockKeychain()
+        let item = MockKeychainItem()
+        
+        try! item.removeFromKeychain(keychain)
+        
+        XCTAssertEqual(keychain.isRemoveCalled, true, "Should call the keychain to remove the item")
     }
 }

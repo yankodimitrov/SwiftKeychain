@@ -161,5 +161,10 @@ extension KeychainItemType {
         
         try keychain.insertItemWithAttributes(attributesToSave)
     }
+    
+    public func removeFromKeychain(keychain: KeychainServiceType = Keychain()) throws {
+        
+        try keychain.removeItemWithAttributes(attributes)
+    }
 }
 
