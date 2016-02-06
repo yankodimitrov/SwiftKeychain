@@ -45,3 +45,19 @@ extension KeychainItemType {
         return NSKeyedUnarchiver.unarchiveObjectWithData(valueData) as? [String: AnyObject] ?? nil
     }
 }
+
+// MARK: - KeychainGenericPasswordType
+
+public protocol KeychainGenericPasswordType: KeychainItemType {
+    
+    var serviceName: String {get}
+    var accountName: String {get}
+}
+
+extension KeychainGenericPasswordType {
+    
+    var serviceName: String {
+        
+        return "swift.keychain.service"
+    }
+}
