@@ -152,3 +152,14 @@ public struct Keychain: KeychainServiceType {
         return nil
     }
 }
+
+// MARK: - KeychainItemType + Keychain
+
+extension KeychainItemType {
+    
+    public func saveInKeychain(keychain: KeychainServiceType = Keychain()) throws {
+        
+        try keychain.insertItemWithAttributes(attributesToSave)
+    }
+}
+

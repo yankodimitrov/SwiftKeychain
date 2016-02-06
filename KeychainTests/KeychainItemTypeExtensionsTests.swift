@@ -24,6 +24,30 @@ struct MockKeychainItem: KeychainItemType {
     }
 }
 
+class MockKeychain: KeychainServiceType {
+    
+    var isInsertCalled = false
+    var isRemoveCalled = false
+    var isFetchCalled = false
+    
+    func insertItemWithAttributes(attributes: [String: AnyObject]) throws {
+        
+        isInsertCalled = true
+    }
+    
+    func removeItemWithAttributes(attributes: [String: AnyObject]) throws {
+        
+        isRemoveCalled = true
+    }
+    
+    func fetchItemWithAttributes(attributes: [String: AnyObject]) throws -> [String: AnyObject]? {
+        
+        isFetchCalled = true
+        
+        return nil
+    }
+}
+
 class KeychainItemTypeExtensionsTests: XCTestCase {
     
     func testDefaultAccessMode() {
@@ -94,5 +118,15 @@ class KeychainItemTypeExtensionsTests: XCTestCase {
         
         XCTAssertEqual(secReturnData, true, "Should contain true in kSecReturnData")
         XCTAssertEqual(secReturnAttributes, true, "Should contain true in kSecReturnAttributes")
+    }
+    
+    func testSaveInKeychain() {
+        
+        let keychain = MockKeychain()
+        let item = MockKeychainItem()
+        
+        try! item.saveInKeychain(keychain)
+        
+        XCTAssertEqual(keychain.isInsertCalled, true, "Should call the Keychain to insert an item")
     }
 }
