@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "Swift wrapper for working with the Keychain API implemented with Protocol Oriented Programming."
 
   s.description  = <<-DESC
-                   An elegant Swift wrapper around the Apple Keychain API, made for iOS, OSX, watchOS and tvOS.
+                   Swift wrapper for working with the Keychain API implemented with Protocol Oriented Programming with support for iOS, OSX, watchOS and tvOS.
                    DESC
 
   s.homepage     = "https://github.com/yankodimitrov/SwiftKeychain"
