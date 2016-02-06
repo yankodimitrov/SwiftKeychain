@@ -48,7 +48,7 @@ do {
     print(error)
 }
 ```
-*Note:* The provied implementation of the <code>KeychainServiceType</code> protocol will replace the item if it already exists in the Keychain database.
+*Note:* The provided implementation of the <code>KeychainServiceType</code> protocol will replace the item if it already exists in the Keychain database.
 
 ### Remove Item
 ```swift
