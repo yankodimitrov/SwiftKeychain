@@ -131,7 +131,7 @@ class KeychainTests: XCTestCase {
         
         do {
             
-            try keychain.fetchItemWithAttributes(attributes)
+            _ = try keychain.fetchItemWithAttributes(attributes)
             
         } catch {
             
