@@ -58,8 +58,8 @@ extension KeychainItemType {
         
         var itemAttributes = attributes
         
-        itemAttributes[String(kSecReturnData)] = true
-        itemAttributes[String(kSecReturnAttributes)] = true
+        itemAttributes[String(kSecReturnData)] = kCFBooleanTrue
+        itemAttributes[String(kSecReturnAttributes)] = kCFBooleanTrue
         
         return itemAttributes
     }
@@ -134,10 +134,7 @@ public struct Keychain: KeychainServiceType {
         
         var result: AnyObject?
         
-        let statusCode = withUnsafeMutablePointer(to: &result) { pointer in
-            
-            SecItemCopyMatching(attributes as CFDictionary, UnsafeMutablePointer(pointer))
-        }
+        let statusCode = SecItemCopyMatching(attributes as CFDictionary, &result)
         
         if statusCode != errSecSuccess {
             
