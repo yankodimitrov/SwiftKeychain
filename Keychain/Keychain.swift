@@ -22,6 +22,7 @@ public protocol KeychainServiceType {
 public protocol KeychainItemType {
     
     var accessMode: String {get}
+    var accessGroup: String? {get}
     var attributes: [String: Any] {get}
     var data: [String: Any] {get set}
     var dataToStore: [String: Any] {get}
@@ -33,6 +34,11 @@ extension KeychainItemType {
         
         return String(kSecAttrAccessibleWhenUnlocked)
     }
+    
+    public var accessGroup: String? {
+        
+        return nil
+    }
 }
 
 extension KeychainItemType {
@@ -43,6 +49,11 @@ extension KeychainItemType {
         let archivedData = NSKeyedArchiver.archivedData(withRootObject: dataToStore)
         
         itemAttributes[String(kSecValueData)] = archivedData
+        
+        if let group = accessGroup {
+            
+            itemAttributes[String(kSecAttrAccessGroup)] = group
+        }
         
         return itemAttributes
     }
@@ -60,6 +71,11 @@ extension KeychainItemType {
         
         itemAttributes[String(kSecReturnData)] = kCFBooleanTrue
         itemAttributes[String(kSecReturnAttributes)] = kCFBooleanTrue
+        
+        if let group = accessGroup {
+            
+            itemAttributes[String(kSecAttrAccessGroup)] = group
+        }
         
         return itemAttributes
     }
@@ -175,3 +191,4 @@ extension KeychainItemType {
         return self
     }
 }
+
