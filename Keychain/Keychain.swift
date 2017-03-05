@@ -12,9 +12,9 @@ import Foundation
 
 public protocol KeychainServiceType {
     
-    func insertItemWithAttributes(attributes: [String: AnyObject]) throws
-    func removeItemWithAttributes(attributes: [String: AnyObject]) throws
-    func fetchItemWithAttributes(attributes: [String: AnyObject]) throws -> [String: AnyObject]?
+    func insertItemWithAttributes(_ attributes: [String: Any]) throws
+    func removeItemWithAttributes(_ attributes: [String: Any]) throws
+    func fetchItemWithAttributes(_ attributes: [String: Any]) throws -> [String: Any]?
 }
 
 // MARK: - KeychainItemType
@@ -22,9 +22,10 @@ public protocol KeychainServiceType {
 public protocol KeychainItemType {
     
     var accessMode: String {get}
-    var attributes: [String: AnyObject] {get}
-    var data: [String: AnyObject] {get set}
-    var dataToStore: [String: AnyObject] {get}
+    var accessGroup: String? {get}
+    var attributes: [String: Any] {get}
+    var data: [String: Any] {get set}
+    var dataToStore: [String: Any] {get}
 }
 
 extension KeychainItemType {
@@ -33,33 +34,48 @@ extension KeychainItemType {
         
         return String(kSecAttrAccessibleWhenUnlocked)
     }
+    
+    public var accessGroup: String? {
+        
+        return nil
+    }
 }
 
 extension KeychainItemType {
     
-    internal var attributesToSave: [String: AnyObject] {
+    internal var attributesToSave: [String: Any] {
         
         var itemAttributes = attributes
-        let archivedData = NSKeyedArchiver.archivedDataWithRootObject(dataToStore)
+        let archivedData = NSKeyedArchiver.archivedData(withRootObject: dataToStore)
         
         itemAttributes[String(kSecValueData)] = archivedData
+        
+        if let group = accessGroup {
+            
+            itemAttributes[String(kSecAttrAccessGroup)] = group
+        }
         
         return itemAttributes
     }
     
-    internal func dataFromAttributes(attributes: [String: AnyObject]) -> [String: AnyObject]? {
+    internal func dataFromAttributes(_ attributes: [String: Any]) -> [String: Any]? {
         
-        guard let valueData = attributes[String(kSecValueData)] as? NSData else { return nil }
+        guard let valueData = attributes[String(kSecValueData)] as? Data else { return nil }
         
-        return NSKeyedUnarchiver.unarchiveObjectWithData(valueData) as? [String: AnyObject] ?? nil
+        return NSKeyedUnarchiver.unarchiveObject(with: valueData) as? [String: Any] ?? nil
     }
     
-    internal var attributesForFetch: [String: AnyObject] {
+    internal var attributesForFetch: [String: Any] {
         
         var itemAttributes = attributes
         
-        itemAttributes[String(kSecReturnData)] = true
-        itemAttributes[String(kSecReturnAttributes)] = true
+        itemAttributes[String(kSecReturnData)] = kCFBooleanTrue
+        itemAttributes[String(kSecReturnAttributes)] = kCFBooleanTrue
+        
+        if let group = accessGroup {
+            
+            itemAttributes[String(kSecAttrAccessGroup)] = group
+        }
         
         return itemAttributes
     }
@@ -80,9 +96,9 @@ extension KeychainGenericPasswordType {
         return "swift.keychain.service"
     }
     
-    public var attributes: [String: AnyObject] {
+    public var attributes: [String: Any] {
     
-        var attributes = [String: AnyObject]()
+        var attributes = [String: Any]()
         
         attributes[String(kSecClass)] = kSecClassGenericPassword
         attributes[String(kSecAttrAccessible)] = accessMode
@@ -97,21 +113,21 @@ extension KeychainGenericPasswordType {
 
 public struct Keychain: KeychainServiceType {
     
-    internal func errorForStatusCode(statusCode: OSStatus) -> NSError {
+    internal func errorForStatusCode(_ statusCode: OSStatus) -> NSError {
         
         return NSError(domain: "swift.keychain.error", code: Int(statusCode), userInfo: nil)
     }
     
     // Inserts or updates a keychain item with attributes
     
-    public func insertItemWithAttributes(attributes: [String: AnyObject]) throws {
+    public func insertItemWithAttributes(_ attributes: [String: Any]) throws {
         
-        var statusCode = SecItemAdd(attributes, nil)
+        var statusCode = SecItemAdd(attributes as CFDictionary, nil)
         
         if statusCode == errSecDuplicateItem {
             
-            SecItemDelete(attributes)
-            statusCode = SecItemAdd(attributes, nil)
+            SecItemDelete(attributes as CFDictionary)
+            statusCode = SecItemAdd(attributes as CFDictionary, nil)
         }
         
         if statusCode != errSecSuccess {
@@ -120,9 +136,9 @@ public struct Keychain: KeychainServiceType {
         }
     }
     
-    public func removeItemWithAttributes(attributes: [String: AnyObject]) throws {
+    public func removeItemWithAttributes(_ attributes: [String: Any]) throws {
         
-        let statusCode = SecItemDelete(attributes)
+        let statusCode = SecItemDelete(attributes as CFDictionary)
         
         if statusCode != errSecSuccess {
             
@@ -130,21 +146,18 @@ public struct Keychain: KeychainServiceType {
         }
     }
     
-    public func fetchItemWithAttributes(attributes: [String: AnyObject]) throws -> [String: AnyObject]? {
+    public func fetchItemWithAttributes(_ attributes: [String: Any]) throws -> [String: Any]? {
         
         var result: AnyObject?
         
-        let statusCode = withUnsafeMutablePointer(&result) { pointer in
-            
-            SecItemCopyMatching(attributes, UnsafeMutablePointer(pointer))
-        }
+        let statusCode = SecItemCopyMatching(attributes as CFDictionary, &result)
         
         if statusCode != errSecSuccess {
             
             throw errorForStatusCode(statusCode)
         }
         
-        if let result = result as? [String: AnyObject] {
+        if let result = result as? [String: Any] {
             
             return result
         }
@@ -157,17 +170,17 @@ public struct Keychain: KeychainServiceType {
 
 extension KeychainItemType {
     
-    public func saveInKeychain(keychain: KeychainServiceType = Keychain()) throws {
+    public func saveInKeychain(_ keychain: KeychainServiceType = Keychain()) throws {
         
         try keychain.insertItemWithAttributes(attributesToSave)
     }
     
-    public func removeFromKeychain(keychain: KeychainServiceType = Keychain()) throws {
+    public func removeFromKeychain(_ keychain: KeychainServiceType = Keychain()) throws {
         
         try keychain.removeItemWithAttributes(attributes)
     }
     
-    public mutating func fetchFromKeychain(keychain: KeychainServiceType = Keychain()) throws -> Self {
+    public mutating func fetchFromKeychain(_ keychain: KeychainServiceType = Keychain()) throws -> Self {
         
         if  let result = try keychain.fetchItemWithAttributes(attributesForFetch),
             let itemData = dataFromAttributes(result) {
@@ -178,3 +191,4 @@ extension KeychainItemType {
         return self
     }
 }
+
