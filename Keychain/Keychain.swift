@@ -113,6 +113,10 @@ extension KeychainGenericPasswordType {
 
 public struct Keychain: KeychainServiceType {
     
+    // Default initializer
+    
+    public init() {}
+    
     internal func errorForStatusCode(_ statusCode: OSStatus) -> NSError {
         
         return NSError(domain: "swift.keychain.error", code: Int(statusCode), userInfo: nil)
