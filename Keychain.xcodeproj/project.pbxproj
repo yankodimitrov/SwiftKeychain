@@ -56,6 +56,7 @@
 		C96BE5581C66409D005EABC7 /* Keychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Keychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96BE5681C66410E005EABC7 /* Keychain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Keychain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96BE5711C66410E005EABC7 /* Keychain OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Keychain OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFD40FDE22A88414004837BD /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 		C96BE50B1C661147005EABC7 = {
 			isa = PBXGroup;
 			children = (
+				DFD40FDE22A88414004837BD /* Package.swift */,
 				C96BE5171C661147005EABC7 /* Keychain */,
 				C96BE5231C661147005EABC7 /* KeychainTests */,
 				C96BE5161C661147005EABC7 /* Products */,
@@ -348,6 +350,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = C96BE50B1C661147005EABC7;
@@ -604,7 +607,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -624,7 +627,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
