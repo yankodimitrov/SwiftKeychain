@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Keychain
+@testable import SwiftKeychain
 
 struct MockKeychainItem: KeychainItemType {
     

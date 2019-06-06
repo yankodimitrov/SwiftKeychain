@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Keychain
+@testable import SwiftKeychain
 
 class KeychainTests: XCTestCase {
     
