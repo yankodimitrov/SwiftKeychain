@@ -1,4 +1,4 @@
-#SwiftKeychain
+# SwiftKeychain
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Abstract
@@ -48,7 +48,8 @@ do {
     print(error)
 }
 ```
-*Note:* The provided implementation of the <code>KeychainServiceType</code> protocol will replace the item if it already exists in the Keychain database.
+> **Note**
+> The provided implementation of the <code>KeychainServiceType</code> protocol will replace the item if it already exists in the Keychain database.
 
 ### Remove Item
 ```swift
@@ -84,7 +85,7 @@ do {
 ```
 
 ## Installation
-SwiftKeychain requires Swift 2.0 and Xcode 7 and supports iOS, OSX, watchOS and tvOS.
+SwiftKeychain requires Swift 3.0 and Xcode 8 and supports iOS, OS X, watchOS and tvOS.
 
 #### Manually
 Copy the <code>Keychain/Keychain.swift</code> file to your project.
@@ -102,4 +103,4 @@ pod “SwiftKeychain”
 ```
 
 ## License
-SwiftKeychain is released under the MIT license. See the LICENSE.txt file for more info.
+SwiftKeychain is released under the MIT license. See the [LICENSE.txt](LICENSE.txt) file for more info.
